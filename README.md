@@ -15,5 +15,5 @@ Prints multiple values to the stream.
 появлении ошибок компиляции `Compilation error: use of 'auto' in parameter declaration only available with -std=c++14 or -std=gnu++14`
 необходимо проверить текущее значение этого параметра.
 
-*Кроме того, понятно, что весь функционал стандартного `print` работать не будет. *
+_Кроме того, понятно, что весь функционал стандартного `print` работать не будет. _
 
