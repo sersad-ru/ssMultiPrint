@@ -11,5 +11,16 @@
 #pragma once
 #include <Arduino.h>
 
-void ssMultiPrint(Print &p, const auto &first, const auto&... rest);
-void ssMultiPrintln(Print &p, const auto&... rest);
+template <typename T, typename ... Args>
+void ssMultiPrint(Print &p, T value, Args ... args){
+  p.print(value);
+  if constexpr(sizeof...(args) > 0) ssMultiPrint(p, args...);
+}// ssMultiPrint
+
+
+template <typename ... Args>
+void ssMultiPrintln(Print &p, Args ... args){
+  ssMultiPrint(p, args...);
+  p.println();
+}// ssMultiPrintln
+
