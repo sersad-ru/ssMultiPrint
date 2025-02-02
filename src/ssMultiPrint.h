@@ -12,10 +12,10 @@
 #include <Arduino.h>
 
 
-template <typename T, typename ... Args>
-void ssMultiPrint(Print &p, T value, Args ... args){
-  p.print(value);
-  if constexpr(sizeof...(args) > 0) ssMultiPrint(p, args...);
+template <typename T, typename ... Rest>
+void ssMultiPrint(Print &p, T first, Rest ... rest){
+  p.print(first);
+  if constexpr(sizeof...(rest) > 0) ssMultiPrint(p, rest...);
 }// ssMultiPrint
 
 

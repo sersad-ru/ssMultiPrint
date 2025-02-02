@@ -21,8 +21,8 @@ Prints multiple values to the stream.
 
 
 ```cpp
-template <typename T, typename ... Args>
-void ssMultiPrint(Print &p, T value, Args ... args);
+template <typename T, typename ... Rest>
+void ssMultiPrint(Print &p, T first, Rest ... rest);
 ```
 
 |Prarm|Type|Description|
