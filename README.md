@@ -42,6 +42,8 @@ void ssMultiPrintln(Print &p, Args ... args);
 |...|`...`|Произвольное число выводимых параметров|
 
 
+## Вывод массива в поток
+
 ```cpp
 template <typename T, typename ST>
 void ssArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t base = DEC);
@@ -58,6 +60,7 @@ void ssArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', cons
 |base|`uint8_t`|Основание для вывода значений **По умолчанию `DEC`** Возможные варианты `DEC`, `BIN`, `OCT`, `HEX`|
 
 
+## Вывод шестнадцатиричного массива в поток
 
 ```cpp
 template <typename T, typename ST>
@@ -75,6 +78,7 @@ void ssHexArrayPrintln(Print&p, T arr[], ST size, const char separator = ' ', co
 |use_prefix|`uint8_t`|Выводить (`true`) или нет (`false`) префикс `0x` перед значениями. **По умолчанию `true`**|
 
 
+## Вывод шестнадцатиричного значения в поток
 
 ```cpp
 template <typename T>
