@@ -24,6 +24,8 @@ Prints multiple values to the stream.
 ```cpp
 template <typename T, typename ... Rest>
 void ssMultiPrint(Print &p, T first, Rest ... rest);
+template <typename ... Args>
+void ssMultiPrintln(Print &p, Args ... args);
 ```
 
 |Prarm|Type|Description|
@@ -31,16 +33,6 @@ void ssMultiPrint(Print &p, T first, Rest ... rest);
 |p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать метод `print`.|
 |...|`...`|Произвольное число выводимых параметров|
 
-
-```cpp
-template <typename ... Args>
-void ssMultiPrintln(Print &p, Args ... args);
-```
-
-|Prarm|Type|Description|
-|:---:|:---|:---|
-|p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|...|`...`|Произвольное число выводимых параметров|
 
 
 ## Вывод массива в поток
