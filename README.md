@@ -55,7 +55,7 @@ void ssArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', cons
 |Prarm|Type|Description|
 |:---:|:---|:---|
 |p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|arr|`any printable`|Массив выводимых значений|
+|arr|`printable`|Массив выводимых значений|
 |size|`integer`|Количество элементов в массиве|
 |separator|`char`|Разделитель выводимых значений **По умолчанию ` ` (пробел)**|
 |base|`uint8_t`|Основание для вывода значений **По умолчанию `DEC`** Возможные варианты `DEC`, `BIN`, `OCT`, `HEX`|
@@ -73,7 +73,7 @@ void ssHexArrayPrintln(Print&p, T arr[], ST size, const char separator = ' ', co
 |Prarm|Type|Description|
 |:---:|:---|:---|
 |p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|arr|`any printable`|Массив выводимых значений|
+|arr|`integer`|Массив выводимых значений|
 |size|`integer`|Количество элементов в массиве|
 |separator|`char`|Разделитель выводимых значений **По умолчанию ` ` (пробел)**|
 |use_prefix|`uint8_t`|Выводить (`true`) или нет (`false`) префикс `0x` перед значениями. **По умолчанию `true`**|
