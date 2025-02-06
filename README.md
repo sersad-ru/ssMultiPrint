@@ -58,8 +58,8 @@ void ssArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', cons
 
 ```cpp
 template <typename T, typename ST>
-void ssHexArrayPrint(Print&p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
-void ssHexArrayPrintln(Print&p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
+void ssHexArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
+void ssHexArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
 ```
 Вывод шестнадцатиричного массива в поток (с последующим переводом строки). 
 
