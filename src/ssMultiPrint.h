@@ -60,7 +60,7 @@ void ssHexPrintln(Print& p, T val, const uint8_t use_prefix = true){
 
 
 template <typename T, typename ST>
-void ssHexArrayPrint(Print&p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true){
+void ssHexArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true){
   for(ST i = 0; i < size; i++){
     ssHexPrint(p, arr[i], use_prefix);
     if(i < (size - 1)) p.print(separator);
@@ -69,7 +69,7 @@ void ssHexArrayPrint(Print&p, T arr[], ST size, const char separator = ' ', cons
 
 
 template <typename T, typename ST>
-void ssHexArrayPrintln(Print&p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true){
+void ssHexArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true){
   ssHexArrayPrint(p, arr, size, separator, use_prefix);
   p.println();
 }//ssHexArrayPrintln
