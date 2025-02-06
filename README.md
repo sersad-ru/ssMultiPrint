@@ -24,6 +24,7 @@ Prints multiple values to the stream.
 ```cpp
 template <typename T, typename ... Rest>
 void ssMultiPrint(Print &p, T first, Rest ... rest);
+
 template <typename ... Args>
 void ssMultiPrintln(Print &p, Args ... args);
 ```
