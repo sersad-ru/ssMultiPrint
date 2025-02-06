@@ -9,8 +9,14 @@
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
-ssMultiPrint	KEYWORD2
-ssMultiPrintln	KEYWORD2
+ssMultiPrint		KEYWORD2
+ssMultiPrintln		KEYWORD2
+ssArrayPrint		KEYWORD2
+ssArrayPrintln		KEYWORD2
+ssHexArrayPrint		KEYWORD2
+ssHexArrayPrintln	KEYWORD2
+ssHexPrint		KEYWORD2
+ssHexPrintln		KEYWORD2
 
 #######################################
 # Structures (KEYWORD3)

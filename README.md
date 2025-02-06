@@ -12,7 +12,7 @@ Prints multiple values to the stream.
 `compiler.cpp.flags=` и в списке его значений меняем установленное значение на 
 `-std=gnu++17` (или `-std=c++17`). При этом надо понимать, что
 при обновлении платформы этот параметр может быть изменен автоматически. Так что при 
-появлении ошибок компиляции вида `Compilation error: use of 'auto' in parameter declaration only available with -std=c++1z or -std=gnu++1z`
+появлении предупреждений компиляции вида `warning: 'if constexpr' only available with -std=c++1z or -std=gnu++1z`
 необходимо проверить текущее значение этого параметра и при необходиости его изменить.
 
 > Кроме того, понятно, что весь функционал стандартного `print` работать не будет.
@@ -43,11 +43,67 @@ void ssMultiPrintln(Print &p, Args ... args);
 
 
 ```cpp
+template <typename T, typename ST>
+void ssArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t base = DEC);
+void ssArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t base = DEC);
+```
+Вывод массива в поток (с последующим переводом строки).
+
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
+|arr|`any printable`|Массив выводимых значений|
+|size|`integer`|Количество элементов в массиве|
+|separator|`char`|Разделитель выводимых значений **По умолчанию ` ` (пробел)**|
+|base|`uint8_t`|Основание для вывода значений **По умолчанию `DEC`** Возможные варианты `DEC`, `BIN`, `OCT`, `HEX`|
+
+
+
+```cpp
+template <typename T, typename ST>
+void ssHexArrayPrint(Print&p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
+void ssHexArrayPrintln(Print&p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
+```
+Вывод шестнадцатиричного массива в поток (с последующим переводом строки). 
+
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
+|arr|`any printable`|Массив выводимых значений|
+|size|`integer`|Количество элементов в массиве|
+|separator|`char`|Разделитель выводимых значений **По умолчанию ` ` (пробел)**|
+|use_prefix|`uint8_t`|Выводить (`true`) или нет (`false`) префикс `0x` перед значениями. **По умолчанию `true`**|
+
+
+
+```cpp
+template <typename T>
+void ssHexPrint(Print& p, T val, const uint8_t use_prefix = true);
+void ssHexPrintln(Print& p, T val, const uint8_t use_prefix = true);
+```
+Вывод шестнадцатиричного значения (с последующим переводом строки).
+
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
+|val|`integer`|Выводимое значение|
+|use_prefix|`uint8_t`|Выводить (`true`) или нет (`false`) префикс `0x` перед значением. **По умолчанию `true`**|
+
+
+
+
+## Пример
+```cpp
 #include <ssMultiPrint.h>
+
+uint8_t arr[] = {0xDE, 0xAD, 0xBE, 0xEF};
 
 void setup() {
   Serial.begin(9600);
-  ssMultiPrintln(Serial, F("Some String and numbers: "), 10, 42, " and more string");
+  ssMultiPrintln(Serial, F("Some String and numbers: "), 10, ',', 42, " and more string"); // Some String and numbers: 10,42 and more string
+  ssHexArrayPrintln(Serial, arr, 4, ':'); // 0xDE:0xAD:0xBE:0xEF
+  ssHexArrayPrintln(Serial, arr, 4, ':', false); // DE:AD:BE:EF
+  ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
 }
 
 void loop() {
