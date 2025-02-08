@@ -89,6 +89,24 @@ void ssHexPrintln(Print& p, T val, const uint8_t use_prefix = true);
 
 
 
+## Вывод значения с фиксированной точкой
+
+```cpp
+template <typename T>
+void ssFixedPrint(Print &p, T val, T scale = 10){
+void ssFixedPrintln(Print &p, T val, T scale = 10){
+```
+Выводит значение с фиксированной точкой (с последующим переводом строки). Положение точки задается 
+параметром `scale`. Так, для того, чтобы вывести `-42.17` необходимо передать в качестве параметра 
+`val` значение `-4217`, а `scale` установить в значение `100`. Для вывода `36.6`: `val = 366`, 
+`scale = 10`.
+
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|Поток, с который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
+|val|`integer`|Выводимое значение, предварительно умноженное на величину `scale`|
+|scale|`unsigned interger`|Масштабный коэффицинет, задающий положение фиксированной точки. **По умолчанию `10`**|
+
 
 ## Пример
 ```cpp
@@ -102,6 +120,8 @@ void setup() {
   ssHexArrayPrintln(Serial, arr, 4, ':'); // 0xDE:0xAD:0xBE:0xEF
   ssHexArrayPrintln(Serial, arr, 4, ':', false); // DE:AD:BE:EF
   ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
+  ssFixedPrintln(Serial, -4288, 100); // -42.88
+  ssFixedPrintln(Serial, 366); // 36.6
 }
 
 void loop() {

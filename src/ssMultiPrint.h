@@ -73,3 +73,18 @@ void ssHexArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', c
   ssHexArrayPrint(p, arr, size, separator, use_prefix);
   p.println();
 }//ssHexArrayPrintln
+
+
+template <typename T>
+void ssFixedPrint(Print &p, T val, T scale = 10){
+  p.print(val / scale);
+  p.print('.');
+  p.print(abs(val % scale)); 
+}//ssFixedPrint
+
+
+template <typename T>
+void ssFixedPrintln(Print &p, T val, T scale = 10){
+  ssFixedPrint(val, scale);
+  p.println();
+}//ssFixedPrint

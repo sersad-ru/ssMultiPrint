@@ -17,6 +17,8 @@ void setup() {
   ssHexArrayPrintln(Serial, arr, 4, ':'); // 0xDE:0xAD:0xBE:0xEF
   ssHexArrayPrintln(Serial, arr, 4, ':', false); // DE:AD:BE:EF
   ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
+  ssFixedPrintln(Serial, -4288, 100); // -42.88
+  ssFixedPrintln(Serial, 366); // 36.6
 }
 
 void loop() {

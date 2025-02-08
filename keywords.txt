@@ -17,7 +17,8 @@ ssHexArrayPrint		KEYWORD2
 ssHexArrayPrintln	KEYWORD2
 ssHexPrint		KEYWORD2
 ssHexPrintln		KEYWORD2
-
+ssFixedPrint		KEYDORD2
+ssFixedPrintln		KEYDORD2
 #######################################
 # Structures (KEYWORD3)
 #######################################
