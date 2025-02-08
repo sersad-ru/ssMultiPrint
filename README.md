@@ -93,8 +93,8 @@ void ssHexPrintln(Print& p, T val, const uint8_t use_prefix = true);
 
 ```cpp
 template <typename T>
-void ssFixedPrint(Print &p, T val, T scale = 10){
-void ssFixedPrintln(Print &p, T val, T scale = 10){
+void ssFixedPrint(Print &p, T val, T scale = 10);
+void ssFixedPrintln(Print &p, T val, T scale = 10);
 ```
 Выводит значение с фиксированной точкой (с последующим переводом строки). Положение точки задается 
 параметром `scale`. Так, для того, чтобы вывести `-42.17` необходимо передать в качестве параметра 
