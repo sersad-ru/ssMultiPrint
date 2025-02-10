@@ -1,25 +1,8 @@
 # ssMultiPrint
-Prints multiple values to the stream.
+Prints multiple values to different output devices.
 
 
-## Вывод списка значений в поток. 
-
-Принимает произвольное число параметров и рекурсивно выводит их в указанный поток,
-используя стандартный метод `print` потока. 
-
-**ВАЖНО!** Для успешной сборки неодходимо, чтобы у компилятора была включена поддержка 
-диалекта `C++17`. Для этого находим файл `platform.txt`, который обычно
-лежит по пути `...packages/arduino/hardware/avr/1.8.6/`. В этом файле находим параметр
-`compiler.cpp.flags=` и в списке его значений меняем установленное значение на 
-`-std=gnu++17` (или `-std=c++17`). При этом надо понимать, что
-при обновлении платформы этот параметр может быть изменен автоматически. Так что при 
-появлении предупреждений компиляции вида `warning: 'if constexpr' only available with -std=c++1z or -std=gnu++1z`
-необходимо проверить текущее значение этого параметра и при необходиости его изменить.
-
-> Кроме того, понятно, что весь функционал стандартного `print` работать не будет.
-Например, задать основание при выводе целых чисел или точность при выводе вещественных
-возможности не будет. 
-
+## Print a variable argument list
 
 ```cpp
 template <typename T, typename ... Rest>
@@ -29,86 +12,96 @@ template <typename ... Args>
 void ssMultiPrintln(Print &p, Args ... args);
 ```
 
+Takes a variable argument list and prints them recursively using standard `print` function.
+
+>You can use any printable values, but you cannot specify the output format. 
+For example, You can call `ssMultiPrint(Serial, 255)` and get the results equal 
+to `Serial.print(255)`. But You cannot get results equal to `Serial.print(255, HEX)`.
+
+
 |Prarm|Type|Description|
 |:---:|:---|:---|
-|p|`Print`|Поток, в который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|...|`...`|Произвольное число выводимых параметров|
+|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|...|`...`|The variable argument list|
 
 
 
-## Вывод массива в поток
+## Print an array of values
 
 ```cpp
 template <typename T, typename ST>
 void ssArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t base = DEC);
 void ssArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t base = DEC);
 ```
-Вывод массива в поток (с последующим переводом строки).
+
+Prints an array of printable values with specific separator and base.
+
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
-|p|`Print`|Поток, в который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|arr|`printable`|Массив выводимых значений|
-|size|`integer`|Количество элементов в массиве|
-|separator|`char`|Разделитель выводимых значений. **По умолчанию `" "` (пробел)**|
-|base|`uint8_t`|Основание для вывода значений. **По умолчанию `DEC`** Возможные варианты `DEC`, `BIN`, `OCT`, `HEX`|
+|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|arr|`printable`|Array of printable values|
+|size|`integer`|Number of elements in the array|
+|separator|`char`|Elements separator. **Default: `" "` (space)**|
+|base|`uint8_t`|The base. **Default: `DEC`**|
 
 
-## Вывод шестнадцатиричного массива в поток
+## Print an hexadecimal array with specific separator and prefix
 
 ```cpp
 template <typename T, typename ST>
 void ssHexArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
 void ssHexArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
 ```
-Вывод шестнадцатиричного массива в поток (с последующим переводом строки). 
+
+Print an hexadecimal array with specific separator and prefix.
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
-|p|`Print`|Поток, в который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|arr|`integer`|Массив выводимых значений|
-|size|`integer`|Количество элементов в массиве|
-|separator|`char`|Разделитель выводимых значений. **По умолчанию `" "` (пробел)**|
-|use_prefix|`uint8_t`|Выводить (`true`) или нет (`false`) префикс `0x` перед значениями. **По умолчанию `true`**|
+|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|arr|`integer`|Array to print|
+|size|`integer`|Number of elements in the array|
+|separator|`char`|Elements separator. **Default: `" "` (space)**|
+|use_prefix|`uint8_t`|Whether to print (`true`) or not (`false`) the `0x` prefix before each element. **Default: `true`**|
 
 
-## Вывод шестнадцатиричного значения в поток
+## Print a single hexadecimal value
 
 ```cpp
 template <typename T>
 void ssHexPrint(Print& p, T val, const uint8_t use_prefix = true);
 void ssHexPrintln(Print& p, T val, const uint8_t use_prefix = true);
 ```
-Вывод шестнадцатиричного значения (с последующим переводом строки).
+
+Prints a single hexadecimal value
+
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
-|p|`Print`|Поток, в который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|val|`integer`|Выводимое значение|
-|use_prefix|`uint8_t`|Выводить (`true`) или нет (`false`) префикс `0x` перед значением. **По умолчанию `true`**|
+|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|val|`integer`|Value to print|
+|use_prefix|`uint8_t`|Whether to print (`true`) or not (`false`) the `0x` prefix before value. **Default: `true`**|
 
 
-
-## Вывод значения с фиксированной точкой
+## Print a fixed point value
 
 ```cpp
 template <typename T>
 void ssFixedPrint(Print &p, T val, T scale = 10);
 void ssFixedPrintln(Print &p, T val, T scale = 10);
 ```
-Выводит значение с фиксированной точкой (с последующим переводом строки). Положение точки задается 
-параметром `scale`. Так, для того, чтобы вывести `-42.17` необходимо передать в качестве параметра 
-`val` значение `-4217`, а `scale` установить в значение `100`. Для вывода `36.6`: `val = 366`, 
-`scale = 10`.
+Prints a fixed-point value. Use the `scale` parameter to specify the number of decimal 
+places to use. For example, to print `-42.17`, use `val=-4217` and `scale=100`. 
+To print `36.6`, use `val=366` and `scale=10`.
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
-|p|`Print`|Поток, в который будет производиться вывод. Должен реализовывать методы `print` и `println`.|
-|val|`integer`|Выводимое значение, предварительно умноженное на величину `scale`|
-|scale|`unsigned interger`|Масштабный коэффицинет, задающий положение фиксированной точки. **По умолчанию `10`**|
+|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|val|`integer`|Value to print multiplied by `scale`.|
+|scale|`unsigned interger`|Parameter to specify the number of decimal places to use. **Default: `10`**|
 
 
-## Пример
+## Example
 ```cpp
 #include <ssMultiPrint.h>
 

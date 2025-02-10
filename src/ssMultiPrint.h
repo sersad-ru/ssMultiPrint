@@ -1,21 +1,46 @@
 /*
+Arduino MultiPrint Library
+(c)2025 by Sergey Sadovnikov (sersad@gmail.com)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <www.gnu.org/licenses/>.
+*/
+
+
+/*
 * Вывод нескольких значений в поток.
 * 
-* ВНИМАНИЕ!!! Требуется включение поддержки синтаксиса c++17 компилятором!!!
-* В файле: packages/arduino/hardware/avr/1.8.6/platform.txt: 
+* ВНИМАНИЕ!!! 
+* В варинте с constexprsizeof требуется включение поддержки синтаксиса 
+* c++17 компилятором.
+*
+* В файле: ...packages/arduino/hardware/avr/1.8.6/platform.txt: 
 * В списке значений параметра compiler.cpp.flags= 
-* Меняем текущее значение на -std=gnu++17
-* При обновлении может слететь. Надо следить!!!
+* Меняем текущее значение на -std=gnu++17 (или -std=c++17)
+* При обновлении среды может слететь. Надо следить!!!
 */
 
 #pragma once
 #include <Arduino.h>
 
 
+void ssMultiPrint(Print &p); // Остановка рекурсии, нужно при отказе от sizeof и constexpr
+
 template <typename T, typename ... Rest>
 void ssMultiPrint(Print &p, T first, Rest ... rest){
   p.print(first);
-  if constexpr(sizeof...(rest) > 0) ssMultiPrint(p, rest...);
+//  if constexpr(sizeof...(rest) > 0) ssMultiPrint(p, rest...);
+  ssMultiPrint(p, rest...);
 }// ssMultiPrint
 
 
@@ -85,6 +110,6 @@ void ssFixedPrint(Print &p, T val, T scale = 10){
 
 template <typename T>
 void ssFixedPrintln(Print &p, T val, T scale = 10){
-  ssFixedPrint(val, scale);
+  ssFixedPrint(p, val, scale);
   p.println();
 }//ssFixedPrint
