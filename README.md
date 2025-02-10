@@ -15,9 +15,9 @@ void ssMultiPrintln(Print &p, Args ... args);
 Takes a variable argument list and prints them recursively using standard `print` function.
 
 
->*Note*. You can use any printable values, but you cannot specify the output format. 
+>*Note. You can use any printable values, but you cannot specify the output format. 
 For example, You can call `ssMultiPrint(Serial, 255)` and get the results equal 
-to `Serial.print(255)`. But You cannot get results equal to `Serial.print(255, HEX)`.
+to `Serial.print(255)`. But You cannot get results equal to `Serial.print(255, HEX)`.*
 
 
 |Prarm|Type|Description|
