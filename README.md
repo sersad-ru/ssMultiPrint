@@ -2,6 +2,15 @@
 Prints multiple values to different output devices.
 
 
+## Table of contents
+* [Print a variable argument list](#Print-a-variable-argument-list)
+* [Print an array of values](#Print-an-array-of-values)
+* [Print an hexadecimal array with specific separator and prefix](#Print-an-hexadecimal-array-with-specific-separator-and-prefix)
+* [Print a single hexadecimal value](#Print-a-single-hexadecimal-value)
+* [Print a fixed point value](#Print-a-fixed-point-value)
+* [Example](#Example)
+* [History](#history)
+
 ## Print a variable argument list
 
 ```cpp
@@ -19,6 +28,7 @@ Takes a variable argument list and prints them recursively using standard `print
 For example, You can call `ssMultiPrint(Serial, 255)` and get the results equal 
 to `Serial.print(255)`. But You cannot get results equal to `Serial.print(255, HEX)`.*
 
+See [Example](#Example).
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
@@ -37,6 +47,7 @@ void ssArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', cons
 
 Prints an array of printable values with specific separator and base.
 
+See [Example](#Example).
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
@@ -57,6 +68,9 @@ void ssHexArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', c
 
 Print an hexadecimal array with specific separator and prefix.
 
+See [Example](#Example).
+
+
 |Prarm|Type|Description|
 |:---:|:---|:---|
 |p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
@@ -76,6 +90,8 @@ void ssHexPrintln(Print& p, T val, const uint8_t use_prefix = true);
 
 Prints a single hexadecimal value
 
+See [Example](#Example).
+
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
@@ -94,6 +110,9 @@ void ssFixedPrintln(Print &p, T val, T scale = 10);
 Prints a fixed-point value. Use the `scale` parameter to specify the number of decimal 
 places to use. For example, to print `-42.17`, use `val=-4217` and `scale=100`. 
 To print `36.6`, use `val=366` and `scale=10`.
+
+See [Example](#Example).
+
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
@@ -121,3 +140,7 @@ void setup() {
 void loop() {
 }
 ```
+
+## History
+
+* 10.02.2025 - The First stable release
