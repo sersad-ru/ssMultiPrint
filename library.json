@@ -1,0 +1,22 @@
+{
+  "name": "ssMultiPrint",
+  "version": "2.0.0",
+  "keywords": "print, serial, format",
+  "description": "Print multiply values to the stream",
+  "homepage": "https://github.com/sersad-ru/ssMultiPrint",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sersad-ru/ssMultiPrint.git"
+  },
+  "authors": {
+    "name": "Sergey Sadovnikov",
+    "email": "sersad@gmail.com",
+    "maintainer": true
+  },
+  "license": "GPL-3.0-or-later",
+  "frameworks": "arduino",
+  "platforms": "*",
+  "headers": "ssMultiPrint.h",
+  "examples": "examples/*.ino",
+  "export": {"exclude": [".git"]}
+}
