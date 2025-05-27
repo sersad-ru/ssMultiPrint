@@ -137,7 +137,7 @@ See [Example](#Example).
 
 |Prarm|Type|Description|
 |:---:|:---|:---|
-|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|p|`Print`|The `Print` class for output. It must implement the `print` function|
 |code|`uint32_t`|The Unicode Number. See [https://symbl.cc/](https://symbl.cc/) for details|
 
 
