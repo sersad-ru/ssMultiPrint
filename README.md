@@ -129,7 +129,7 @@ void ssUnicodeCharPrint(Print &p, const uint32_t code);
 ```
 Prints a Unicode character to a UTF-8 compatible stream. 
 You can use 8, 16 or 32-bit symbol number. 
-See [https://symbl.cc/](https://symbl.cc/) for unicode symbols and its codes.
+See [https://symbl.cc/](https://symbl.cc/) for unicode symbols and its numbers.
 
 For example, to print the `Red Pushpin` symbol ("📌") use `128204 (0x1F4CC)` code. 
 
