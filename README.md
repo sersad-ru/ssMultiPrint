@@ -128,7 +128,8 @@ See [Example](#Example).
 void ssUnicodeCharPrint(Print &p, const uint32_t code);
 ```
 Prints a Unicode character to a UTF-8 compatible stream. 
-You can use 8, 16 or 32-bit symbol code. See [https://symbl.cc/](https://symbl.cc/)
+You can use 8, 16 or 32-bit symbol code. See [https://symbl.cc/](https://symbl.cc/) for details.
+
 For example, to print the `Red Pushpin` symbol ("📌") use `128204 (0x1F4CC)` code. 
 
 See [Example](#Example).
