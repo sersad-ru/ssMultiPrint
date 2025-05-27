@@ -122,19 +122,23 @@ See [Example](#Example).
 |scale|`unsigned interger`|Parameter to specify the number of decimal places to use. **Default: `10`**|
 
 
-## Print-a-unicode-symbol
+## Print a unicode symbol
 
 ```cpp
 void ssUnicodeCharPrint(Print &p, const uint32_t code);
 ```
 Prints a Unicode character to a UTF-8 compatible stream. 
-You can use 8, 16 or 32-bit symbol code. 
+You can use 8, 16 or 32-bit symbol number. 
 See [https://symbl.cc/](https://symbl.cc/) for unicode symbols and its codes.
 
 For example, to print the `Red Pushpin` symbol ("📌") use `128204 (0x1F4CC)` code. 
 
 See [Example](#Example).
 
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|The `Print` class for output. It must implement the `print` and `println` functions|
+|code|`uint32_t`|The Unicode Number. See [https://symbl.cc/](https://symbl.cc/) for details|
 
 
 ## Example
