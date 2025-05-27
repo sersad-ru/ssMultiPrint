@@ -15,10 +15,11 @@ ssArrayPrint		KEYWORD2
 ssArrayPrintln		KEYWORD2
 ssHexArrayPrint		KEYWORD2
 ssHexArrayPrintln	KEYWORD2
-ssHexPrint		KEYWORD2
+ssHexPrint			KEYWORD2
 ssHexPrintln		KEYWORD2
-ssFixedPrint		KEYDORD2
-ssFixedPrintln		KEYDORD2
+ssFixedPrint		KEYWORD2
+ssFixedPrintln		KEYWORD2
+ssUnicodeCharPrint  KEYWORD2
 #######################################
 # Structures (KEYWORD3)
 #######################################

@@ -8,6 +8,7 @@ Prints multiple values to different output devices.
 * [Print an hexadecimal array with specific separator and prefix](#Print-an-hexadecimal-array-with-specific-separator-and-prefix)
 * [Print a single hexadecimal value](#Print-a-single-hexadecimal-value)
 * [Print a fixed point value](#Print-a-fixed-point-value)
+* [Print a unicode symbol](#Print-a-unicode-symbol)
 * [Example](#Example)
 * [History](#history)
 
@@ -121,6 +122,19 @@ See [Example](#Example).
 |scale|`unsigned interger`|Parameter to specify the number of decimal places to use. **Default: `10`**|
 
 
+## Print-a-unicode-symbol
+
+```cpp
+void ssUnicodeCharPrint(Print &p, const uint32_t code);
+```
+Prints a Unicode character to a UTF-8 compatible stream. 
+You can use 8, 16 or 32-bit symbol code. See [https://symbl.cc/](https://symbl.cc/)
+For example, to print the `Red Pushpin` symbol ("📌") use `128204 (0x1F4CC)` code. 
+
+See [Example](#Example).
+
+
+
 ## Example
 ```cpp
 #include <ssMultiPrint.h>
@@ -135,6 +149,7 @@ void setup() {
   ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
   ssFixedPrintln(Serial, -4288, 100); // -42.88
   ssFixedPrintln(Serial, 366); // 36.6
+  ssUnicodeCharPrint(Serial, 0x1F4CC); // the red pushpin symbol
 }
 
 void loop() {
@@ -144,3 +159,4 @@ void loop() {
 ## History
 
 * 10.02.2025 - The First stable release
+* 27.02.2025 - `ssUnicodeCharPrint` function added.

@@ -113,3 +113,6 @@ void ssFixedPrintln(Print &p, T val, T scale = 10){
   ssFixedPrint(p, val, scale);
   p.println();
 }//ssFixedPrint
+
+
+void ssUnicodeCharPrint(Print &p, const uint32_t code);
