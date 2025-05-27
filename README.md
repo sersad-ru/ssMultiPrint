@@ -155,7 +155,7 @@ void setup() {
   ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
   ssFixedPrintln(Serial, -4288, 100); // -42.88
   ssFixedPrintln(Serial, 366); // 36.6
-  ssUnicodeCharPrint(Serial, 0x1F4CC); // the red pushpin symbol
+  ssUnicodeCharPrint(Serial, 0x1F4CC); // the red pushpin symbol "📌"
 }
 
 void loop() {
