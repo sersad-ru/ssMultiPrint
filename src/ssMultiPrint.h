@@ -116,3 +116,48 @@ void ssFixedPrintln(Print &p, T val, T scale = 10){
 
 
 void ssUnicodeCharPrint(Print &p, const uint32_t code);
+
+
+template <typename T>
+uint8_t ssGetCharCount(T val, uint8_t radix = 10){
+  uint8_t res = 0;
+  if(!val) return 1; // просто 0
+  if(val < 0) res++; // +1 для знака "-"
+  for(; val; val /= radix) res++;
+  return res;
+}//ssGetCharCount
+
+
+typedef enum {
+  ALIGN_LEFT,
+  ALIGN_CENTER,
+  ALIGN_RIGHT
+} ssAlign;
+
+template <typename T>
+void ssAlignPrint(Print &p, T val, const uint8_t size, ssAlign align = ALIGN_RIGHT, char fill = ' '){
+  uint8_t len = ssGetCharCount(val, 10);
+  switch(align){
+    case ALIGN_LEFT: 
+      p.print(val); 
+      for(uint8_t i = 0; i < size - len; i++) p.print(fill); 
+    break;
+    case ALIGN_RIGHT: 
+      for(uint8_t i = 0; i < size - len; i++) p.print(fill); 
+      p.print(val); 
+    break;
+    case ALIGN_CENTER:
+      for(uint8_t i = 0; (i < (size - len) >> 1); i++) p.print(fill); 
+      p.print(val); 
+      for(uint8_t i = 0; (i < (size - len) >> 1); i++) p.print(fill); 
+    break;
+  }//switch
+}//ssAlignPrint
+
+
+template <typename T>
+void ssAlignPrintln(Print &p, T val, const uint8_t size, ssAlign align = ALIGN_RIGHT, char fill = ' '){
+  ssAlignPrint(p, val, size, align, fill);
+  p.println();
+}//ssAlignPrintln
+

@@ -5,10 +5,12 @@ Prints multiple values to different output devices.
 ## Table of contents
 * [Print a variable argument list](#Print-a-variable-argument-list)
 * [Print an array of values](#Print-an-array-of-values)
-* [Print an hexadecimal array with specific separator and prefix](#Print-an-hexadecimal-array-with-specific-separator-and-prefix)
+* [Print a hexadecimal array with specific separator and prefix](#Print-a-hexadecimal-array-with-specific-separator-and-prefix)
 * [Print a single hexadecimal value](#Print-a-single-hexadecimal-value)
 * [Print a fixed point value](#Print-a-fixed-point-value)
 * [Print a unicode symbol](#Print-a-unicode-symbol)
+* [Calculate string length for integer value](#Calculate-string-length-for-integer-value)
+* [Print an aligned integer value](#Print-an-aligned-integer-value)
 * [Example](#Example)
 * [History](#history)
 
@@ -67,7 +69,7 @@ void ssHexArrayPrint(Print &p, T arr[], ST size, const char separator = ' ', con
 void ssHexArrayPrintln(Print &p, T arr[], ST size, const char separator = ' ', const uint8_t use_prefix = true);
 ```
 
-Print an hexadecimal array with specific separator and prefix.
+Print a hexadecimal array with specific separator and prefix.
 
 See [Example](#Example).
 
@@ -108,6 +110,7 @@ template <typename T>
 void ssFixedPrint(Print &p, T val, T scale = 10);
 void ssFixedPrintln(Print &p, T val, T scale = 10);
 ```
+
 Prints a fixed-point value. Use the `scale` parameter to specify the number of decimal 
 places to use. For example, to print `-42.17`, use `val=-4217` and `scale=100`. 
 To print `36.6`, use `val=366` and `scale=10`.
@@ -127,6 +130,7 @@ See [Example](#Example).
 ```cpp
 void ssUnicodeCharPrint(Print &p, const uint32_t code);
 ```
+
 Prints a Unicode character to a UTF-8 compatible stream. 
 You can use 8, 16 or 32-bit symbol number. 
 See [https://symbl.cc/](https://symbl.cc/) for unicode symbols and its numbers.
@@ -140,6 +144,49 @@ See [Example](#Example).
 |p|`Print`|The `Print` class for output. It must implement the `print` function|
 |code|`uint32_t`|The Unicode Number. See [https://symbl.cc/](https://symbl.cc/) for details|
 
+
+## Calculate string length for integer value
+
+```cpp
+template <typename T>
+uint8_t ssGetCharCount(T val, uint8_t radix);
+```
+
+Returns the size (in chars) of the string representing an integer value in selected radix.
+
+
+See [Example](#Example).
+
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|The `Print` class for output. It must implement the `print` function|
+|val|`integer`|The value to calculate the string representation of|
+|radix|`uint8_t`|The base of the number system. Can be 10, 16, 8 or 2. **Default: `10`**|
+
+
+## Print an aligned integer value
+
+```cpp
+template <typename T>
+void ssAlignPrint(Print &p, T val, const uint8_t size, ssAlign align = ALIGN_RIGHT, char fill = ' ');
+void ssAlignPrintln(Print &p, T val, const uint8_t size, ssAlign align = ALIGN_RIGHT, char fill = ' ');
+
+```
+
+Prints an aligned integer value with the specified block size.
+* For left-aligned values, the right side of the block will be filled with the `fill` character.
+* For right-aligned values, the left side of the block will be filled with the `fill` character.
+* For center-aligned values, the left and right sides of the block will be filled with the `fill` character.
+
+See [Example](#Example).
+
+|Prarm|Type|Description|
+|:---:|:---|:---|
+|p|`Print`|The `Print` class for output. It must implement the `print` function|
+|val|`integer`|The value to be printed|
+|size|`uint8_t`|The size of the block (in chars)|
+|align|`ssAlign`|The alignment. Can be `ALIGN_LEFT`, `ALIGN_RIGHT` or `ALIGN_CENTER`. **Default: `ALIGN_RIGHT`**|
+|fill|`char`|The fill symbol. This symbol will be printed on the free space of the block. **Default: ` `(space)**|
 
 ## Example
 ```cpp
@@ -156,6 +203,11 @@ void setup() {
   ssFixedPrintln(Serial, -4288, 100); // -42.88
   ssFixedPrintln(Serial, 366); // 36.6
   ssUnicodeCharPrint(Serial, 0x1F4CC); // the red pushpin symbol "📌"
+  Serial.println(ssGetCharCount(2147483648, 10)); // 10
+  ssAlignPrintln(Serial, 42, 10); // "        42"
+  ssAlignPrintln(Serial, 42, 10, ALIGN_LEFT); // "42        "
+  ssAlignPrintln(Serial, 42, 10, ALIGN_CENTER); // "    42    "
+
 }
 
 void loop() {
@@ -166,3 +218,4 @@ void loop() {
 
 * 10.02.2025 - The First stable release
 * 27.02.2025 - `ssUnicodeCharPrint` function added.
+* 28.02.2025 - `ssGetCharCount`, `ssAlignPrint` functions added.

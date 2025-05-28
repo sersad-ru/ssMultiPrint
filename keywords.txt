@@ -5,6 +5,7 @@
 #######################################
 # Datatypes (KEYWORD1)
 #######################################
+ssAlign				KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
@@ -20,6 +21,9 @@ ssHexPrintln		KEYWORD2
 ssFixedPrint		KEYWORD2
 ssFixedPrintln		KEYWORD2
 ssUnicodeCharPrint  KEYWORD2
+ssGetCharCount		KEYWORD2
+ssAlignPrint		KEYWORD2
+ssAlignPrintln		KEYWORD2
 #######################################
 # Structures (KEYWORD3)
 #######################################
@@ -27,3 +31,7 @@ ssUnicodeCharPrint  KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
+ALIGN_LEFT			LITERAL1
+ALIGN_CENTER		LITERAL1
+ALIGN_RIGHT			LITERAL1
+

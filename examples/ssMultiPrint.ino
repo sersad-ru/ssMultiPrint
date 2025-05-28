@@ -20,6 +20,10 @@ void setup() {
   ssFixedPrintln(Serial, -4288, 100); // -42.88
   ssFixedPrintln(Serial, 366); // 36.6
   ssUnicodeCharPrint(Serial, 0x1F4CC); // the red pushpin symbol "📌"
+  Serial.println(ssGetCharCount(2147483648, 10)); // 10
+  ssAlignPrintln(Serial, 42, 10); // "        42"
+  ssAlignPrintln(Serial, 42, 10, ALIGN_LEFT); // "42        "
+  ssAlignPrintln(Serial, 42, 10, ALIGN_CENTER); // "    42    "
 }
 
 void loop() {

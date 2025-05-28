@@ -1,6 +1,6 @@
 {
   "name": "ssMultiPrint",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "keywords": "print, serial, format",
   "description": "Print multiply values to the stream",
   "homepage": "https://github.com/sersad-ru/ssMultiPrint",
