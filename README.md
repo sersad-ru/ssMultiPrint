@@ -217,5 +217,5 @@ void loop() {
 ## History
 
 * 10.02.2025 - The First stable release
-* 27.02.2025 - `ssUnicodeCharPrint` function added.
-* 28.02.2025 - `ssGetCharCount`, `ssAlignPrint` functions added.
+* 27.05.2025 - `ssUnicodeCharPrint` function added.
+* 28.05.2025 - `ssGetCharCount`, `ssAlignPrint` functions added.
