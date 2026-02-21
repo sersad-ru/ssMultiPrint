@@ -1,6 +1,6 @@
 /*
 Arduino MultiPrint Library
-(c)2025 by Sergey Sadovnikov (sersad@gmail.com)
+(c)2025-2026 by Sergey Sadovnikov (sersad@gmail.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -49,6 +49,18 @@ void ssMultiPrintln(Print &p, Args ... args){
   ssMultiPrint(p, args...);
   p.println();
 }// ssMultiPrintln
+
+
+template <typename ... Args>
+void print(Args ... args){
+  ssMultiPrint(Serial, args...);
+}//print
+
+
+template <typename ... Args>
+void println(Args ... args){
+  ssMultiPrintln(Serial, args...);
+}//println
 
 
 template <typename T, typename ST>

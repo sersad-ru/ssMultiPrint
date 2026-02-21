@@ -22,6 +22,12 @@ void ssMultiPrint(Print &p, T first, Rest ... rest);
 
 template <typename ... Args>
 void ssMultiPrintln(Print &p, Args ... args);
+
+template <typename ... Args>
+void print(Args ... args); // Just print to the Serial
+
+template <typename ... Args>
+void println(Args ... args); // Just print to the Serial
 ```
 
 Takes a variable argument list and prints them recursively using standard `print` function.
@@ -197,6 +203,7 @@ uint8_t arr[] = {0xDE, 0xAD, 0xBE, 0xEF};
 void setup() {
   Serial.begin(9600);
   ssMultiPrintln(Serial, F("Some String and numbers: "), 10, ',', 42, " and more string"); // Some String and numbers: 10,42 and more string
+  println(F("Some String and numbers: "), 10, ',', 42, " and more string"); // Short version of above to print to Serial
   ssHexArrayPrintln(Serial, arr, 4, ':'); // 0xDE:0xAD:0xBE:0xEF
   ssHexArrayPrintln(Serial, arr, 4, ':', false); // DE:AD:BE:EF
   ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
@@ -219,3 +226,4 @@ void loop() {
 * 10.02.2025 - The First stable release
 * 27.05.2025 - `ssUnicodeCharPrint` function added.
 * 28.05.2025 - `ssGetCharCount`, `ssAlignPrint` functions added.
+* 21.02.2026 - `print` and `println` functions added to quickly print to the `Serial`

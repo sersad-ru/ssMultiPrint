@@ -10,13 +10,15 @@ ssAlign				KEYWORD1
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
+print			KEYWORD2
+println                 KEYWORD2
 ssMultiPrint		KEYWORD2
 ssMultiPrintln		KEYWORD2
 ssArrayPrint		KEYWORD2
 ssArrayPrintln		KEYWORD2
 ssHexArrayPrint		KEYWORD2
 ssHexArrayPrintln	KEYWORD2
-ssHexPrint			KEYWORD2
+ssHexPrint		KEYWORD2
 ssHexPrintln		KEYWORD2
 ssFixedPrint		KEYWORD2
 ssFixedPrintln		KEYWORD2
@@ -31,7 +33,7 @@ ssAlignPrintln		KEYWORD2
 #######################################
 # Constants (LITERAL1)
 #######################################
-ALIGN_LEFT			LITERAL1
+ALIGN_LEFT		LITERAL1
 ALIGN_CENTER		LITERAL1
-ALIGN_RIGHT			LITERAL1
+ALIGN_RIGHT		LITERAL1
 

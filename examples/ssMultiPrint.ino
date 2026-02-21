@@ -4,6 +4,7 @@
  * (c)2025 by sersad.ru 
  * 28.01.2025
  * 06.02.2025
+ * 21.02.2026
  * 
 */
 
@@ -14,6 +15,7 @@ uint8_t arr[] = {0xDE, 0xAD, 0xBE, 0xEF};
 void setup() {
   Serial.begin(9600);
   ssMultiPrintln(Serial, F("Some String and numbers: "), 10, ',', 42, " and more string"); // Some String and numbers: 10,42 and more string
+  println(F("Some String and numbers: "), 10, ',', 42, " and more string"); // Short version of above to print to Serial
   ssHexArrayPrintln(Serial, arr, 4, ':'); // 0xDE:0xAD:0xBE:0xEF
   ssHexArrayPrintln(Serial, arr, 4, ':', false); // DE:AD:BE:EF
   ssArrayPrintln(Serial, arr, 4); // 222 173 190 239
